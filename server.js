@@ -35,6 +35,14 @@ server.route({
     }
 })
 
+server.route({
+  method: 'GET',
+  path: '/repubs',
+  handler: (request, h) => {
+    return Senators.filter(senator => senator.party === 'Republican')
+  }
+})
+
 
 
 const init = async () => {
