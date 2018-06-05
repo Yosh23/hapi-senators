@@ -6,7 +6,7 @@ const Hapi = require('hapi');
 'use strict';
 
 const server = Hapi.server ({
-    port: 4000,
+    port: 3000,
     host: 'localhost'
 });
 
