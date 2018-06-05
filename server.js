@@ -6,7 +6,7 @@ const Hapi = require('hapi');
 'use strict';
 
 const server = Hapi.server ({
-    port: 3000,
+    port: 4000,
     host: 'localhost'
 });
 
@@ -35,6 +35,38 @@ server.route({
     }
 });
 
+
+
+server.route({
+    method: 'GET',
+    path: '/dems',
+    handler: (request, h) => {
+        return Senators.filter(senator => senator.party === 'Democrat')
+    }
+})
+
+
+
+
+server.route({
+  method: 'GET',
+  path: '/repubs',
+  handler: (request, h) => {
+    return Senators.filter(senator => senator.party === 'Republican')
+  }
+});
+
+
+//Mark code goes below
+
+server.route({
+    method: 'GET',
+path: '/males',
+handler: (request, h) => {
+    return Senators.filter(senator => senator.person.gender === 'male')
+}
+
+});
 server.route({
     method: 'GET',
     path: '/female',
