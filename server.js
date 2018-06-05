@@ -33,6 +33,7 @@ server.route({
     handler: (request, h) => {
         return Senators.filter(senator => senator.party === 'Independent')
     }
+<<<<<<< HEAD
 
 })
 
@@ -43,6 +44,30 @@ server.route({
         return Senators.filter(senator => senator.party === 'Democrat')
     }
 })
+=======
+});
+
+
+
+server.route({
+  method: 'GET',
+  path: '/repubs',
+  handler: (request, h) => {
+    return Senators.filter(senator => senator.party === 'Republican')
+  }
+});
+
+
+//Mark code goes below
+
+server.route({
+    method: 'GET',
+path: '/males',
+handler: (request, h) => {
+    return Senators.filter(senator => senator.person.gender === 'male')
+}
+});
+>>>>>>> 22be35673bd8fb9f90bbe40b47c5cb53af09db65
 
 const init = async () => {
     await server.start();
