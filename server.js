@@ -6,7 +6,7 @@ const Hapi = require('hapi');
 'use strict';
 
 const server = Hapi.server ({
-    port: 3000,
+    port: 4000,
     host: 'localhost'
 });
 
@@ -33,9 +33,15 @@ server.route({
     handler: (request, h) => {
         return Senators.filter(senator => senator.party === 'Independent')
     }
-})
+});
 
-
+server.route({
+    method: 'GET',
+    path: '/female',
+    handler: (request, h) => {
+        return Senators.filter(senator => senator.person.gender === 'female')
+    }
+});
 
 const init = async () => {
     await server.start();
